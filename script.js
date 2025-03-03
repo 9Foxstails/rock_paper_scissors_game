@@ -1,24 +1,4 @@
-//PSEUDO CODE
-/*
-1. Randomise computer choice
-    1.1 1 to 33 rock, 33 to 66 paper, 67 to 100 scissors.
-    1.2 if 0 roll again.
-2. Get human choice
-    2.1 disregard cases sensitivity,
-3. Keep score
-    3.1 Global scope
-4. Compare choice in rounds total of 5
-    4.1 main function if you will
-    4.2 ends when one of players reaches score of 5
-5. Write message who win round
-6. Write who won at the end
 
-
-*/
-
-//test
-//console.log("hello world!");
-/***********************************************************************/
 let humanScore=0;
 let computerScore=0;
 
@@ -26,37 +6,43 @@ function playGame(i=0){
     let humanChoice="";
     let computerChoice="";
 
-    while (i<5){
-        function playRound(){
+    for (let i=0;i<5;i++){
+        function playRound(result){
             humanChoice=getHumanChoice();
             computerChoice=getComputerChoice();
             
             if (humanChoice===computerChoice){
-                return console.log("It's a tie!");
+                result=("It's a tie"
+                        +"\nScore: "
+                        +"Human "+humanScore
+                        +"/ Computer "+computerScore)
+                return console.log(result);
             }
             else if (humanChoice==="Rock" && computerChoice==="Scissors" ||
                 humanChoice==="Paper" && computerChoice==="Rock" ||
                 humanChoice==="Scissors" && computerChoice==="Paper"){
                     humanScore++;
-                    return console.log(("Human wins the round. "+humanChoice+" beats "+computerChoice));
+                    result=("Human wins the round. "+humanChoice+" beats "+computerChoice
+                            +"\nScore: "
+                            +"Human "+humanScore
+                            +"/ Computer "+computerScore)
+                    return console.log(result);
                 }
             else{
                 computerScore++;
-                return console.log(("Computer wins the round. "+computerChoice+" beats "+humanChoice));
+                result=("Computer wins the round. "
+                        +computerChoice
+                        +" beats "
+                        +humanChoice
+                        +"\nScore: "
+                        +"Human "+humanScore
+                        +"/ Computer "+computerScore);
+                return console.log(result);
             }
         }
 
         playRound(humanChoice, computerChoice);
         
-        if (i<humanScore){
-            i=humanScore;
-        }
-        else if (i<computerScore){
-            i=computerScore;
-        }
-        else{
-            i=i;
-        }
     }
     if (humanScore>computerScore){
         return "Human wins!";
@@ -65,12 +51,10 @@ function playGame(i=0){
         return "Computer wins!";
     }
 }
-//computer choice thing
 function getComputerChoice(randomNumber=0){
     
         while (randomNumber==0){
             randomNumber = Math.floor(Math.random()*100);
-            //console.log(randomNumber);
         }
         
         
@@ -88,7 +72,6 @@ function getComputerChoice(randomNumber=0){
             }
 }
 
-//human choice thing
 function getHumanChoice(choice, i=0){
     while(i==0){
         choice=prompt("Rock, Paper, or Scissors?", "");
@@ -110,15 +93,4 @@ function getHumanChoice(choice, i=0){
     return choice;
 }
 
-// function stringCompare(comparison){
-
-// }
-
-
-//testing stuff delete later
-// console.log(getHumanChoice());
-// console.log(getComputerChoice());
-//console.log(playRound());
 console.log(playGame());
-console.log(computerScore);
-console.log(humanScore);
