@@ -40,15 +40,30 @@ function getComputerChoice(randomNumber=0){
             }
 }
 
-// function getHumanChoice(choice){
-//     while (choice != 0 )
-//         {
-//         console.log("Human:", choice);
-//         }
-//     console.log("Human:", choice);
-//     return choice;
+function getHumanChoice(choice, i=0){
+    while(i==0){
+        choice=prompt("Rock, Paper, or Scissors?", "");
+        choice=choice.slice(0,1).toUpperCase()+choice.slice(1).toLowerCase();
+        if ("Rock".localeCompare(choice)==0){
+            i=1;
+        }
+        else if ("Paper".localeCompare(choice)==0){
+            i=1;
+        }
+        else if("Scissors".localeCompare(choice)==0){
+            i=1;
+        }
+        else{
+            i=0;
+        }
+    }
+    
+    return choice;
+}
+
+// function stringCompare(comparison){
+
 // }
 
-//getComputerChoice();
-//console.log(getHumanChoice());
+console.log(getHumanChoice());
 console.log(getComputerChoice());
